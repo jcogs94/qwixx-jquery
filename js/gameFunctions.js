@@ -38,11 +38,11 @@ const gameOver = () => {
         switch (element) {
             case ('penaltyBox'):
                 for (let i = 1; i < 5; i++) {
-                    elements[element][`${i}`].setAttribute('disabled', true);
+                    $(('#checkbox' + String(i))).attr('disabled', true);
                 }
                 break;
             case ('rollButton'):
-                elements[element].setAttribute('disabled', true);
+                $('#roll-button').attr('disabled', true);
                 break;
             default:
                 let colorKey = Object.keys(elements[element]);
@@ -110,12 +110,13 @@ const resetDisabledButtons = () => {
     }
 
     // Enables roll button
-    elements.rollButton.removeAttribute('disabled');
+    // elements.rollButton.removeAttribute('disabled');
+    $('#roll-button').removeAttr('disabled');
 
     // Resets penalty boxes to be unchecked and disabled until first roll
     for (let i = 1; i < 5; i++) {
-        elements.penaltyBox[i].checked = false;
-        elements.penaltyBox[i].setAttribute('disabled', true);
+        $(('#checkbox' + String(i))).attr('checked', false);
+        $(('#checkbox' + String(i))).attr('disabled', true);
     }
     
     // Adds 'disabled' attribute to the lock buttons to show user they are unavailable at game start
@@ -133,8 +134,9 @@ const removeXs = () => {
 
     // Removes X's on penalty boxes
     for (let i = 1; i < 5; i++) {
-        if (elements.penaltyDisplay[i].innerHTML === 'X') {
-            elements.penaltyDisplay[i].innerHTML = '';
+        let id = ('#checkbox' + String(i))
+        if ($(id).html() === 'X') {
+            $(id).html('');
         }
     }
 }
@@ -517,7 +519,7 @@ const rollDice = () => {
         if (gameState.start) {
             // Enables penalty boxes
             for (let i = 1; i < 5; i++) {
-                elements.penaltyBox[i].removeAttribute('disabled');
+                $(('#checkbox' + String(i))).removeAttr('disabled');
             }
             
             gameState.start = false;
@@ -573,7 +575,7 @@ const rollDice = () => {
         gameState.combinationSelection = false;
 
         // Disables roll dice button until turn complete
-        elements.rollButton.setAttribute('disabled', 'true');
+        $('#roll-button').attr('disabled', 'true');
     } else {
         // Can't roll dice error placeholder
     }

@@ -45,9 +45,10 @@ const penaltyBox = () => {
     if (gameState.diceRolled) {
         // Disables the checked box
         for (let i = 1; i < 5; i++) {
-            if (elements.penaltyBox[i].checked === true) {
-                elements.penaltyBox[i].setAttribute('disabled', true);
-                elements.penaltyDisplay[i].innerHTML = 'X';
+            let id = '#checkbox' + String(i)
+            if (document.querySelector(id).checked === true) {
+                $(id).attr('disabled', true);
+                $((id + '-label')).html('X');
             }
         }
     
@@ -63,7 +64,7 @@ const penaltyBox = () => {
         } else {
             // Ends turn, enables roll button
             gameState.diceRolled = false;
-            elements.rollButton.removeAttribute('disabled');
+            $('#roll-button').removeAttr('disabled');
             
             // Removes options display, and calls for roll
             displayMessage.removeColorOption('all');

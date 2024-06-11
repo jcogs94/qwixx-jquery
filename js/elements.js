@@ -146,10 +146,6 @@ for (let i = 0; i < 8; i++) {
     }
 }
 
-// Button elements to control game flow
-const rollButton = document.querySelector('#roll-button');
-const newGameButton = document.querySelector('#new-game-button');
-
 // Penalty boxes
 const penaltyBox = {};
 const penaltyDisplay = {};
@@ -171,6 +167,7 @@ const guideBox = document.querySelector('#guide-box');
 // Exports all objects/elements
 export {
     turnBox, red, yellow, green, blue, scores, lockButtons,
-    rollButton, newGameButton, penaltyBox,dice, optionsContainer,
+    // penaltyBox,
+    dice, optionsContainer,
     optionsHeadingBox, optionsBox, guideBox, penaltyDisplay
 };

@@ -7,7 +7,7 @@ const addListeners = () => {
     // Red button listeners
     let redButtons = Object.values(elements.red);
     redButtons.forEach((element) => {
-        element.addEventListener('click', () => {
+        $(element).click( () => {
             handler.red(element.innerHTML);
         });
     })
@@ -15,7 +15,7 @@ const addListeners = () => {
     // Yellow button listeners
     let yellowButtons = Object.values(elements.yellow);
     yellowButtons.forEach((element) => {
-        element.addEventListener('click', () => {
+        $(element).click( () => {
             handler.yellow(element.innerHTML);
         });
     })
@@ -23,7 +23,7 @@ const addListeners = () => {
     // Green button listeners
     let greenButtons = Object.values(elements.green);
     greenButtons.forEach((element) => {
-        element.addEventListener('click', () => {
+        $(element).click( () => {
             handler.green(element.innerHTML);
         });
     })
@@ -31,18 +31,18 @@ const addListeners = () => {
     // Blue button listeners
     let blueButtons = Object.values(elements.blue);
     blueButtons.forEach((element) => {
-        element.addEventListener('click', () => {
+        $(element).click( () => {
             handler.blue(element.innerHTML);
         });
     })
 
     // Listeners for game flow control
-    elements.rollButton.addEventListener('click', handler.rollButton);
-    elements.newGameButton.addEventListener('click', handler.newGameButton);
+    $('#roll-button').click(handler.rollButton );
+    $('#new-game-button').click(handler.newGameButton);
 
     // Listener for penalty checks
     for (let i = 1; i < 5; i++) {
-        elements.penaltyBox[i].addEventListener('change', handler.penaltyBox);
+        $(('#checkbox' + String(i))).change(handler.penaltyBox);
     }
 }
 
