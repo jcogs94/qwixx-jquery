@@ -66,66 +66,6 @@ const turnBox = {
     gameOver: gameOver
 }
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ~~~~~BUTTON SELECTION ELEMENTS~~~~~~
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-// Define empty objects to obtain button elements by color
-let red = {};
-let yellow = {};
-let green = {};
-let blue = {};
-
-// Obtain red button elements
-const redRow = document.querySelector('.red');
-const redChildren = redRow.children;
-for (let element of redChildren) {
-    red[element.innerHTML] = element;
-}
-
-// Obtain yellow button elements
-const yellowRow = document.querySelector('.yellow');
-const yellowChildren = yellowRow.children;
-for (let element of yellowChildren) {
-    yellow[element.innerHTML] = element;
-}
-
-// Obtain green button elements
-const greenRow = document.querySelector('.green');
-const greenChildren = greenRow.children;
-for (let element of greenChildren) {
-    green[element.innerHTML] = element;
-}
-
-// Obtain blue button elements
-const blueRow = document.querySelector('.blue');
-const blueChildren = blueRow.children;
-for (let element of blueChildren) {
-    blue[element.innerHTML] = element;
-}
-
-// Object to contain all lock button elements
-const lockButtons = {
-    all: document.querySelectorAll('.disable-lock'),
-    red: [],
-    yellow: [],
-    green: [],
-    blue: []
-};
-
-// Separates out the lock button elements by color
-for (let i = 0; i < 8; i++) {
-    if (i === 0 || i === 1) {
-        lockButtons.red.push(lockButtons.all[i]);
-    } else if (i === 2 || i === 3) {
-        lockButtons.yellow.push(lockButtons.all[i]);
-    } else if (i === 4 || i === 5) {
-        lockButtons.green.push(lockButtons.all[i]);
-    } else if (i === 6 || i === 7) {
-        lockButtons.blue.push(lockButtons.all[i]);
-    }
-}
-
 // Turn box elements
 const optionsContainer = document.querySelector('#options-container');
 const optionsHeadingBox = document.querySelector('#options-heading-box')
@@ -135,8 +75,9 @@ const guideBox = document.querySelector('#guide-box');
 
 // Exports all objects/elements
 export {
-    turnBox, red, yellow, green, blue,
-    lockButtons,
+    turnBox,
     optionsContainer,
-    optionsHeadingBox, optionsBox, guideBox
+    optionsHeadingBox,
+    optionsBox,
+    guideBox
 };
