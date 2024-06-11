@@ -104,16 +104,6 @@ for (let element of blueChildren) {
     blue[element.innerHTML] = element;
 }
 
-// Score box elements
-const scores = {
-    red: document.querySelector('#red-total-box'),
-    yellow: document.querySelector('#yellow-total-box'),
-    green: document.querySelector('#green-total-box'),
-    blue: document.querySelector('#blue-total-box'),
-    penalties: document.querySelector('#penalty-total-box'),
-    total: document.querySelector('#total-box')
-}
-
 // Object to contain all lock button elements
 const lockButtons = {
     all: document.querySelectorAll('.disable-lock'),
@@ -145,7 +135,8 @@ const guideBox = document.querySelector('#guide-box');
 
 // Exports all objects/elements
 export {
-    turnBox, red, yellow, green, blue, scores, lockButtons,
+    turnBox, red, yellow, green, blue,
+    lockButtons,
     optionsContainer,
     optionsHeadingBox, optionsBox, guideBox
 };

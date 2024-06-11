@@ -77,7 +77,16 @@ const updateScoreBoard = () => {
     
     // Displays updated scores on the dom
     scoresArr.forEach( (scoreType) => {
-        elements.scores[scoreType].innerText = `${gameState.scores[scoreType]}`;
+        // elements.scores[scoreType].innerText = `${gameState.scores[scoreType]}`;
+        let id = '#';
+        
+        if (scoreType !== 'total') {
+            id += (scoreType === 'penalties' ? 'penalty' : scoreType) + '-';
+        }
+
+        id += 'total-box';
+
+        $(id).html(`${gameState.scores[scoreType]}`);
     });
 }
 
