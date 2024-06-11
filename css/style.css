@@ -1,0 +1,505 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    max-width: 100vw;
+    min-width: 1590px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+#title-box, #name, .scoring, .score-total-text, .score-number, #penalties-reference, .die, #options-heading-box, #options-box, #guide-box, #instructions-box {
+    cursor: default;
+}
+
+#title-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+    width: 927px;
+    height: 100px;
+    margin-top: 15px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    font-weight: 900;
+    gap: 5px;
+}
+
+#title-box > h1 {
+    font-size: 42px;
+}
+
+#title-box > p {
+    font-size: 21px;
+}
+
+#play-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#turn-box, #instructions-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 761px;
+    width: 300px;
+    margin: 20px 20px 0;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: whitesmoke;
+}
+
+#instructions-box {
+    padding: 10px 10px 0px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+#instructions-box > h2 {
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid black;
+    font-size: 24px;
+}
+
+.instruction {
+    font-size: 14px;
+}
+
+#play-column {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+#board {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    width: 927px;
+    height: 532px;
+    gap: 10px;
+    margin: 20px auto;
+    background-color: whitesmoke;
+    border: 2px solid black;
+}
+
+#name {
+    margin: 10px 0 0 40px;
+    font-size: 26px;
+}
+
+#number-grid {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.numbers-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+    padding: 5px;
+}
+
+.numbers, .lock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 70px;
+    padding: 0;
+    background-color: white;
+    opacity: .8;
+    cursor: pointer;
+    font-size: 45px;
+    font-weight: 500;
+    line-height: 100%;
+}
+
+.numbers {
+    border-radius: 6px;
+}
+
+.lock {
+    border-radius: 100%;
+}
+
+#scoring-and-penalty-row {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    margin-left: 15px;
+    margin-right: 10px;
+    justify-content: space-evenly;
+}
+
+.scoring {
+    justify-content: space-between;
+    margin: 10px 20px;
+    height: 100%;
+    text-align: center;
+    border: 2px solid gray;
+    border-radius: 7px;
+    padding: 5px 7px;
+    margin: 0;
+}
+
+.scoring > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-scoring, .bottom-scoring {
+    height: 25px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.bottom-scoring {
+    border-top: 1px solid black;
+}
+
+#penalties-box {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 130px;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#penalties-reference {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#penalty-points-text {
+    font-weight: 400;
+    font-size: 19px;
+}
+
+#penalty-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+#die-icon {
+    color: rgb(0, 0, 0, .5);
+    font-size: 24px;
+}
+
+#icon-x {
+    position: relative;
+    bottom: 0;
+    left: 5px;
+    font-size: 29px;
+}
+
+.checkbox-display {
+    height: 35px;
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 2px solid gray;
+    border-radius: 2px;
+    z-index: 1;
+    font-size: 27px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.penalty-checkbox {
+    display: none;
+}
+
+.score-total-text {
+    line-height: 100%;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+#score-total-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgb(167, 167, 167);
+    padding: 10px 32px;
+    gap: 15px;
+}
+
+#score-total-row > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.score-total-box {
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 500;
+    font-size: 25px;
+    border-radius: 8px;
+}
+
+.total-white {
+    width: 94%;
+    height: 90%;
+    background-color: rgb(255, 255, 255, 0.7);
+    border-radius: 5px;
+}
+
+.score-number {
+    line-height: 40px;
+    height: 100%;
+    width: 100%;
+    font-size: 33px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#total-box-container {
+    width: 180px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+#penalty-total-box {
+    background-color: white;
+    border: 2px solid gray;
+    border-radius: 8px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+.box-mark {
+    position: absolute;
+    font-weight: 500;
+    line-height: 100%;
+    font-size: 80px;
+}
+
+#display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 927px;
+    height: 200px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: whitesmoke;
+}
+
+#player-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.control-buttons {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    background-color: white;
+    border-radius: 8px;
+    line-height: 100%;
+    font-size: 27px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#dice-box {
+    width: 650px;
+    height: 150px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+.die {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    border: 3px solid black;
+    border-radius: 25px;
+    line-height: 100%;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.white-die, #white-options {
+    background-color: white;
+}
+
+#red-die, #red-options {
+    background-color: red;
+}
+
+#yellow-die, #yellow-options {
+    background-color: yellow;
+}
+
+#green-die, #green-options {
+    background-color: green;
+}
+
+#blue-die, #blue-options {
+    background-color: blue;
+}
+
+#turn-box {
+    justify-content: space-between;
+}
+
+#options-container {
+    height: 390px;
+    width: 100%;
+}
+
+#options-heading-box {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid black;
+    line-height: 100%;
+    font-size: 33px;
+    font-weight: 700;
+}
+
+#options-box {
+    height: 335px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#options-box > * {
+    height: 45px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    line-height: 100%;
+    font-weight: 600;
+    font-size: 33px;
+}
+
+#guide-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 200px;
+    width: 100%;
+    padding: 10px;
+    border-top: 2px solid black;
+}
+
+#roll-to-begin {
+    position: relative;
+    right: 45px;
+    bottom: 35px;
+    font-size: 19px;
+}
+
+#choose-container > * {
+    margin: 5px auto 5px 20px;
+}
+
+#choose-container > h2 {
+    font-size: 24px;
+}
+
+#choose-container > ul > li {
+    font-size: 16px;
+}
+
+#guide-box > h3 {
+    font-size: 18px;
+}
+
+#guide-box > h2 {
+    font-size: 24px;
+}
+
+#roll-dice-prompt {
+    position: relative;
+    bottom: 35px;
+    right: 85px;
+}
+
+#game-over {
+    font-size: 48px;
+    font-weight: 600;
+}

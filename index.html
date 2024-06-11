@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer type="module" src="js/app.js"></script>
+    <script src="https://kit.fontawesome.com/b6ae47e1ab.js" crossorigin="anonymous"></script>
+    <title>Qwixx</title>
+</head>
+<body>
+    <div id="title-box">
+        <h1>Qwixx</h1>
+        <p>A fast-paced dice rolling game</p>
+    </div>
+    <div id="play-row">
+        <div id="instructions-box">
+            <h2>Instructions</h2>
+            <ul id="instructions-ul">
+                <li class="instruction"><b>Objective: </b> Score as many points as possible by crossing out numbers on the board from left to right.</li>
+                <li class="instruction">The more numbers of each color that are crossed out, the higher they are worth.</li>
+                <li class="instruction">To start your turn, roll the dice and add them together to equal the number you would like to cross out for a specific color.</li>
+                <li class="instruction">During your turn, you may <b>either</b> add together the white dice and cross out <em>any</em> color with that total <b>or</b> you can add together one of the white dice and one of the colored dice to cross out a number of that color.</li>
+                <li class="instruction">If you would like to, you can cross out <b>both</b> a white combination <b>and</b> a combination of a white die and a colored die <em>but</em>, <b>you must do the white combination first</b>.</li>
+                <li class="instruction">Numbers <b>must</b> be crossed out from left to right. Once you cross out a number, <b>you cannot cross a number to the left of it</b>.</li>
+                <li class="instruction">If you cannot or do not cross out at least one combination, you <b>must</b> take a penalty (in the bottom right of the board) for -5 points each.</li>
+                <li class="instruction">If you have <b>at least 5</b> numbers crossed out of a color, you are able to "lock out" that color by crossing out the "12", "2" or "L" for that color. "Locking out" a color will cross off both the "12" and "L" and count towards you total points. It also removes that color from the game.</li>
+                <li class="instruction">The game ends when <em>two colors have been "locked out"</em> or when <em>all four penalties have been marked</em>.</li>
+            </ul>
+        </div>
+        <div id="play-column">
+            <div id="board">
+                <h1 id="name">QWIXX</h1>
+                <div id="number-grid">
+                    <div class="numbers-row red">
+                        <button class="numbers">2</button>
+                        <button class="numbers">3</button>
+                        <button class="numbers">4</button>
+                        <button class="numbers">5</button>
+                        <button class="numbers">6</button>
+                        <button class="numbers">7</button>
+                        <button class="numbers">8</button>
+                        <button class="numbers">9</button>
+                        <button class="numbers">10</button>
+                        <button class="numbers">11</button>
+                        <button class="numbers disable-lock">12</button>
+                        <button class="lock disable-lock">L</button>
+                    </div>
+                    <div class="numbers-row yellow">
+                        <button class="numbers">2</button>
+                        <button class="numbers">3</button>
+                        <button class="numbers">4</button>
+                        <button class="numbers">5</button>
+                        <button class="numbers">6</button>
+                        <button class="numbers">7</button>
+                        <button class="numbers">8</button>
+                        <button class="numbers">9</button>
+                        <button class="numbers">10</button>
+                        <button class="numbers">11</button>
+                        <button class="numbers disable-lock">12</button>
+                        <button class="lock disable-lock">L</button>
+                    </div>
+                    <div class="numbers-row green">
+                        <button class="numbers">12</button>
+                        <button class="numbers">11</button>
+                        <button class="numbers">10</button>
+                        <button class="numbers">9</button>
+                        <button class="numbers">8</button>
+                        <button class="numbers">7</button>
+                        <button class="numbers">6</button>
+                        <button class="numbers">5</button>
+                        <button class="numbers">4</button>
+                        <button class="numbers">3</button>
+                        <button class="numbers disable-lock">2</button>
+                        <button class="lock disable-lock">L</button>
+                    </div>
+                    <div class="numbers-row blue">
+                        <button class="numbers">12</button>
+                        <button class="numbers">11</button>
+                        <button class="numbers">10</button>
+                        <button class="numbers">9</button>
+                        <button class="numbers">8</button>
+                        <button class="numbers">7</button>
+                        <button class="numbers">6</button>
+                        <button class="numbers">5</button>
+                        <button class="numbers">4</button>
+                        <button class="numbers">3</button>
+                        <button class="numbers disable-lock">2</button>
+                        <button class="lock disable-lock">L</button>
+                    </div>
+                </div>
+                <div id="scoring-and-penalty-row">
+                    <div class="scoring">
+                        <div class="top-scoring">X</div>
+                        <div class="bottom-scoring">points</div>
+                    </div>
+                    <div class="scoring">
+                        <div class="top-scoring">1x</div>
+                        <div class="bottom-scoring">1</div>
+                    </div>
+                    <div class="scoring">
+                        <div class="top-scoring">2x</div>
+                        <div class="bottom-scoring">3</div>
+                    </div>
+                    <div class="scoring">
+                        <div class="top-scoring">3x</div>
+                        <div class="bottom-scoring">6</div>
+                    </div>
+                    <div class="scoring">
+                        <div class="top-scoring">4x</div>
+                        <div class="bottom-scoring">10</div>
+                    </div>
+                    <div class="scoring">
+                        <div class="top-scoring">5x</div>
+                        <div class="bottom-scoring">15</div>
+                    </div>
+                    <div class="scoring">
+                        <div class="top-scoring">6x</div>
+                        <div class="bottom-scoring">21</div>
+                    </div>
+                    <div class="scoring">
+                        <div class="top-scoring">7x</div>
+                        <div class="bottom-scoring">28</div>
+                    </div>
+                    <div class="scoring">
+                        <div class="top-scoring">8x</div>
+                        <div class="bottom-scoring">36</div>
+                    </div>
+                    <div class="scoring">
+                        <div class="top-scoring">9x</div>
+                        <div class="bottom-scoring">45</div>
+                    </div>
+                    <div class="scoring">
+                        <div class="top-scoring">10x</div>
+                        <div class="bottom-scoring">55</div>
+                    </div>
+                    <div class="scoring">
+                        <div class="top-scoring">11x</div>
+                        <div class="bottom-scoring">66</div>
+                    </div>
+                    <div class="scoring">
+                        <div class="top-scoring">12x</div>
+                        <div class="bottom-scoring">78</div>
+                    </div>
+                    <div id="penalties-box">
+                        <div id="penalties-reference">
+                            <i class="fa-solid fa-dice fa-xl" id="die-icon">
+                                <div id="icon-x">X</div>
+                            </i>
+                            <div id="penalty-points-text">= -5</div>
+                        </div>
+                        <div id="penalty-row">
+                            <label id="checkbox-label" for="checkbox1">
+                                <div class="checkbox-display"></div>
+                            </label>
+                            <input type="checkbox" class="penalty-checkbox" id="checkbox1">
+                            <label id="checkbox-label" for="checkbox2">
+                                <div class="checkbox-display"></div>
+                            </label>
+                            <input type="checkbox" class="penalty-checkbox" id="checkbox2">
+                            <label id="checkbox-label" for="checkbox3">
+                                <div class="checkbox-display"></div>
+                            </label>
+                            <input type="checkbox" class="penalty-checkbox" id="checkbox3">
+                            <label id="checkbox-label" for="checkbox4">
+                                <div class="checkbox-display"></div>
+                            </label>
+                            <input type="checkbox" class="penalty-checkbox" id="checkbox4">
+                        </div>
+                    </div>
+                </div>
+                <div id="score-total-row">
+                    <div class="score-total-text" id="totals-text">totals</div>
+                    <div class="score-total-box red">
+                        <div class="total-white">
+                            <div class="score-number" id="red-total-box"></div>
+                        </div>
+                    </div>
+                    <div class="score-total-text">+</div>
+                    <div class="score-total-box yellow">
+                        <div class="total-white">
+                            <div class="score-number" id="yellow-total-box"></div>
+                        </div>
+                    </div>
+                    <div class="score-total-text">+</div>
+                    <div class="score-total-box green">
+                        <div class="total-white">
+                            <div class="score-number" id="green-total-box"></div>
+                        </div>
+                    </div>
+                    <div class="score-total-text">+</div>
+                    <div class="score-total-box blue">
+                        <div class="total-white">
+                            <div class="score-number" id="blue-total-box"></div>
+                        </div>
+                    </div>
+                    <div class="score-total-text">-</div>
+                    <div class="score-total-box">
+                        <div class="score-number" id="penalty-total-box"></div>
+                    </div>
+                    <div class="score-total-text">=</div>
+                    <div class="score-total-box" id="total-box-container">
+                        <div class="score-number" id="total-box"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="display">
+                <div id="dice-box">
+                    <div class="die white-die" id="white1"></div>
+                    <div class="die white-die" id="white2"></div>
+                    <div class="die" id="red-die"></div>
+                    <div class="die" id="yellow-die"></div>
+                    <div class="die" id="green-die"></div>
+                    <div class="die" id="blue-die"></div>
+                </div>
+                <div id="player-buttons">
+                    <button class="control-buttons" id="roll-button">Roll Dice</button>
+                    <button class="control-buttons" id="new-game-button">New Game</button>
+                </div>
+            </div>
+        </div>
+        <div id="turn-box">
+            <div id="options-container">
+                <div id="options-heading-box">Options</div>
+                <div id="options-box">
+                    <div id="white-options"></div>
+                    <div id="red-options"></div>
+                    <div id="yellow-options"></div>
+                    <div id="green-options"></div>
+                    <div id="blue-options"></div>
+                </div>
+            </div>
+            <div id="guide-box"></div>
+        </div>
+    </div>
+</body>
+</html>
