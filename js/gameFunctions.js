@@ -30,10 +30,7 @@ const gameOver = () => {
                 $('#roll-button').attr('disabled', true);
                 break;
             default:
-                let colorKey = Object.keys(elements[element]);
-                colorKey.forEach( (key) => {
-                    elements[element][key].setAttribute('disabled', true);
-                });
+                $(`.${element} > *`).attr('disabled', true);
                 break;
         }
     })
