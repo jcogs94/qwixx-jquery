@@ -134,7 +134,7 @@ const removeXs = () => {
 
     // Removes X's on penalty boxes
     for (let i = 1; i < 5; i++) {
-        let id = ('#checkbox' + String(i))
+        let id = ('#checkbox' + String(i) + '-label')
         if ($(id).html() === 'X') {
             $(id).html('');
         }
