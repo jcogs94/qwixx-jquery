@@ -1,6 +1,5 @@
 import { gameState } from "./gameState.js";
 import * as gameFunctions from "./gameFunctions.js";
-import * as elements from "./elements.js";
 import * as displayMessage from "./displayMessage.js";
 
 // Each color button will update the 'playerChoice' and call for validation
@@ -20,15 +19,13 @@ const newGameButton = () => {
     gameFunctions.newGame();
 }
 
-const penaltyBox = () => {
+const penaltyBox = (i) => {
     if (gameState.diceRolled) {
         // Disables the checked box
-        for (let i = 1; i < 5; i++) {
-            let id = '#checkbox' + String(i)
-            if (document.querySelector(id).checked === true) {
-                $(id).attr('disabled', true);
-                $((id + '-label')).html('X');
-            }
+        let id = `#checkbox${i}`
+        if (document.querySelector(id).checked === true) {
+            $(id).attr('disabled', true);
+            $((id + '-label')).html('X');
         }
     
         // Adjusts penalty count in gameState
@@ -49,13 +46,6 @@ const penaltyBox = () => {
             displayMessage.removeColorOption('all');
             displayMessage.removeTurnOptions();
             displayMessage.rollPrompt();
-        }
-    } else {
-        // Unchecks the checked box
-        for (let i = 1; i < 5; i++) {
-            if (elements.penaltyBox[i].checked === true && elements.penaltyBox[i].disabled === false) {
-                elements.penaltyBox[i].checked = false;
-            }
         }
     }
 }

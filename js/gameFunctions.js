@@ -107,7 +107,7 @@ const resetDisabledButtons = () => {
     // Resets penalty boxes to be unchecked and disabled until first roll
     for (let i = 1; i < 5; i++) {
         let id = '#checkbox' + String(i)
-        $(id).attr('checked', false);
+        $(id).prop('checked', false);
         $(id).attr('disabled', true);
     }
     
