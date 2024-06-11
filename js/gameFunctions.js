@@ -1,4 +1,3 @@
-import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
 import * as displayMessage from "./displayMessage.js";
 import * as utils from "./utils.js"
@@ -92,12 +91,15 @@ const resetDisabledButtons = () => {
     let buttonKey;
     let color = ['red', 'yellow', 'green', 'blue']
     // Loops through each color[] and uses its key to remove 'disabled' attributes of all buttons
-    for (let i = 0; i < 4; i++) {
-        buttonKey = Object.keys(elements[color[i]]);
-        buttonKey.forEach( (key) => {
-            elements[color[i]][key].removeAttribute('disabled');
-        })
-    }
+    color.forEach( (color) => {
+        $(`.${color} > .numbers`).removeAttr('disabled')
+    })
+    // for (let i = 0; i < 4; i++) {
+    //     buttonKey = Object.keys(elements[color[i]]);
+    //     buttonKey.forEach( (key) => {
+    //         elements[color[i]][key].removeAttribute('disabled');
+    //     })
+    // }
 
     // Enables roll button
     $('#roll-button').removeAttr('disabled');
@@ -215,31 +217,31 @@ const newGame = () => {
 // Disables buttons to the left of the user selection to have visual reference
 // to the player that those moves are invalid
 const disableToLeft = (color) => {
-    const colorRowElements = Object.values(elements[color]);
+    const colorRowElements = document.querySelectorAll(`.${color} > .numbers`);
     colorRowElements.forEach((element) => {
         // Determines the color and disables buttons to the left of the highest selection
         switch (color) {
             case 'red':
                 if (parseInt(element.innerText) <= gameState.colorStatus.lowestRed) {
-                    element.setAttribute('disabled', true);
+                    $(element).attr('disabled', true);
                 }
                 
                 break;
             case 'yellow':
                 if (parseInt(element.innerText) <= gameState.colorStatus.lowestYellow) {
-                    element.setAttribute('disabled', true);
+                    $(element).attr('disabled', true);
                 }
                 
                 break;
             case 'green':
                 if (parseInt(element.innerText) >= gameState.colorStatus.highestGreen) {
-                    element.setAttribute('disabled', true);
+                    $(element).attr('disabled', true);
                 }
                 
                 break;
             case 'blue':
                 if (parseInt(element.innerText) >= gameState.colorStatus.highestBlue) {
-                    element.setAttribute('disabled', true);
+                    $(element).attr('disabled', true);
                 }
                 
                 break;
@@ -309,11 +311,11 @@ const crossOutInput = (color, num, lock) => {
     // Adds 'X' to box selected, if 'L', referenced separately
     if (num === 0) {
         // Append new 'X' element to the 'L' selected
-        elements[color]['L'].appendChild(boxMark);
+        $(`.${color} > .${lock}`).append(boxMark);
     }
     else {
         // Append new 'X' element to the number selected
-        elements[color][num].appendChild(boxMark);
+        $(`.${color} > .${num}`).append(boxMark);
     }
 
     // Enables 'lock' buttons if more than five of that
@@ -323,10 +325,9 @@ const crossOutInput = (color, num, lock) => {
     // If a lock has been selected, also marks the adjacent
     // box and adjusts the score
     if (lock) {
-        // Copied from above for new 'X', can re-write?
-        const lockMark = document.createElement('h1');
-        lockMark.setAttribute('class', 'box-mark');
-        lockMark.innerText = 'X';
+        const boxMark2 = document.createElement('h1');
+        boxMark2.setAttribute('class', 'box-mark');
+        boxMark2.innerText = 'X';
         
         // Marks adjacent box
         if (num === 0) {
@@ -334,22 +335,19 @@ const crossOutInput = (color, num, lock) => {
     
             // Marks either 12 or 2, depending on color
             if (color === 'red' || color === 'yellow') {
-                elements[color]['12'].appendChild(lockMark);
+                $(`.${color} > .12`).append(boxMark2);
             } else if (color === 'green' || color === 'blue') {
-                elements[color]['2'].appendChild(lockMark);
+                $(`.${color} > .2`).append(boxMark2);
             }
         } else if (num === 12 || num === 2) {
             // Player hit '12' button
             
             // Marks 'L'
-            elements[color]['L'].appendChild(lockMark);
+            $(`.${color} > .lock`).append(boxMark2);
         }
         
         // Lock whole row
-        let colorRow = Object.keys(elements[color]);
-        colorRow.forEach( (key) => {
-            elements[color][key].setAttribute('disabled', true);
-        });
+        $(`.${color} > *`).attr('disabled', true);
 
         // Removes locked color die from game
         removeColor(color);
