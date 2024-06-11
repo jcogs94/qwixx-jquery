@@ -146,17 +146,6 @@ for (let i = 0; i < 8; i++) {
     }
 }
 
-// Penalty boxes
-const penaltyBox = {};
-const penaltyDisplay = {};
-const allPenaltyElements = document.querySelectorAll('.penalty-checkbox');
-const allPenaltyDisplayElements = document.querySelectorAll('.checkbox-display');
-for (let i = 0; i < 4; i++) {
-    let key = i + 1;
-    penaltyBox[key] = allPenaltyElements[i];
-    penaltyDisplay[key] = allPenaltyDisplayElements[i];
-}
-
 // Turn box elements
 const optionsContainer = document.querySelector('#options-container');
 const optionsHeadingBox = document.querySelector('#options-heading-box')
@@ -167,7 +156,6 @@ const guideBox = document.querySelector('#guide-box');
 // Exports all objects/elements
 export {
     turnBox, red, yellow, green, blue, scores, lockButtons,
-    // penaltyBox,
     dice, optionsContainer,
-    optionsHeadingBox, optionsBox, guideBox, penaltyDisplay
+    optionsHeadingBox, optionsBox, guideBox
 };
