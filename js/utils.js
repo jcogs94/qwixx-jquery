@@ -40,7 +40,7 @@ const additionValid = (inputColor, inputNum) => {
     // Valid if the two white dice added together equal this amount
     if (inputNum === gameState.rollValues.whiteTotal && gameState.whiteSelection === false) {
         // Enables roll dice button
-        elements.rollButton.removeAttribute('disabled');
+        $('#roll-button').removeAttr('disabled');
         
         // Removes white option if used
         displayMessage.removeColorOption('white');

@@ -115,8 +115,9 @@ const resetDisabledButtons = () => {
 
     // Resets penalty boxes to be unchecked and disabled until first roll
     for (let i = 1; i < 5; i++) {
-        $(('#checkbox' + String(i))).attr('checked', false);
-        $(('#checkbox' + String(i))).attr('disabled', true);
+        let id = '#checkbox' + String(i)
+        $(id).attr('checked', false);
+        $(id).attr('disabled', true);
     }
     
     // Adds 'disabled' attribute to the lock buttons to show user they are unavailable at game start
@@ -127,10 +128,7 @@ const resetDisabledButtons = () => {
 
 // Function used to remove 'X's left from previous game
 const removeXs = () => {
-    const xElements = document.querySelectorAll('.box-mark');
-    xElements.forEach( (markedBox) => {
-        markedBox.remove();
-    })
+    $('.box-mark').remove()
 
     // Removes X's on penalty boxes
     for (let i = 1; i < 5; i++) {
