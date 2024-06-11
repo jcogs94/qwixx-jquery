@@ -273,7 +273,6 @@ const lockCheck = (color, num, lock) => {
 // Function to remove a color from the dice rolls
 const removeColor = (color) => {
     $(`#${color}-die`).hide();
-    // elements.dice[color].remove();
 }
 
 // Crosses out the selection, updates visuals
@@ -524,27 +523,27 @@ const rollDice = () => {
         
         // Rolls white die
         gameState.roll.white1 = rollDie();
-        elements.dice.white1.innerHTML = gameState.roll.white1;
+        $('#white1').html(gameState.roll.white1)
         
         gameState.roll.white2 = rollDie();
-        elements.dice.white2.innerHTML = gameState.roll.white2;
+        $('#white2').html(gameState.roll.white2)
         
         // Rolls each color if in play and updates dom
         if (gameState.colorInPlay.red) {
             gameState.roll.red = rollDie();
-            elements.dice.red.innerHTML = gameState.roll.red;
+            $('#red-die').html(gameState.roll.red)
         }
         if (gameState.colorInPlay.yellow) {
             gameState.roll.yellow = rollDie();
-            elements.dice.yellow.innerHTML = gameState.roll.yellow;
+            $('#yellow-die').html(gameState.roll.yellow)
         }
         if (gameState.colorInPlay.green) {
             gameState.roll.green = rollDie();
-            elements.dice.green.innerHTML = gameState.roll.green;
+            $('#green-die').html(gameState.roll.green)
         }
         if (gameState.colorInPlay.blue) {
             gameState.roll.blue = rollDie();
-            elements.dice.blue.innerHTML = gameState.roll.blue;
+            $('#blue-die').html(gameState.roll.blue)
         }
         
         // Calls function to update possible values from roll
