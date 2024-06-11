@@ -5,31 +5,16 @@ import * as utils from "./utils.js"
 
 // Resets dice display to be blank
 const resetDice = () => {
-    // Replaces red die if previously removed    
-    if (document.querySelector('#red-die') === null) {
-        elements.dice.white2.insertAdjacentElement('afterend', elements.dice.red);
-    }
-
-    // Replaces yellow die if previously removed    
-    if (document.querySelector('#yellow-die') === null) {
-        elements.dice.red.insertAdjacentElement('afterend', elements.dice.yellow);
-    }
-
-    // Replaces red die if previously removed    
-    if (document.querySelector('#green-die') === null) {
-        elements.dice.yellow.insertAdjacentElement('afterend', elements.dice.green);
-    }
-
-    // Replaces red die if previously removed    
-    if (document.querySelector('#blue-die') === null) {
-        elements.dice.green.insertAdjacentElement('afterend', elements.dice.blue);
-    }
-
-    // Resets dice to appear blank until first roll
-    const diceArr = Object.keys(elements.dice);
-    diceArr.forEach( (die) => {
-        elements.dice[die].innerHTML = '';
+    // Shows previously hidden dice and resets displayed value to be empty
+    let colors = ['red', 'yellow', 'green', 'blue']
+    colors.forEach( (color) => {
+        $(`#${color}-die`).show()
+        $(`#${color}-die`).html('')
     })
+    
+    // Sets display of white dice to be empty
+    $(`#white1`).html('')
+    $(`#white2`).html('')
 }
 
 const gameOver = () => {
@@ -287,7 +272,8 @@ const lockCheck = (color, num, lock) => {
 
 // Function to remove a color from the dice rolls
 const removeColor = (color) => {
-    elements.dice[color].remove();
+    $(`#${color}-die`).hide();
+    // elements.dice[color].remove();
 }
 
 // Crosses out the selection, updates visuals
