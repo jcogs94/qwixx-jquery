@@ -464,7 +464,7 @@ const validateInput = () => {
         if (gameState.diceRolled) {
             if(gameState.combinationSelection) {
                 // Enables roll dice button
-                elements.rollButton.removeAttribute('disabled');
+                $('#roll-button').removeAttr('disabled');
                 
                 gameState.diceRolled = false;
             }
