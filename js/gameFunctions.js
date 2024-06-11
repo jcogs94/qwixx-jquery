@@ -256,9 +256,7 @@ const lockCheck = (color, num, lock) => {
     // marked out 5 of that color yet, disables the color for the rest of the game (not legal for the color
     // to be finished)
     if (gameState.playerSelectionCount[color] >= 5 && gameState.colorLockAvailable[color] === false && gameState.colorInPlay[color]) {
-        elements.lockButtons[color].forEach( (lock) => {
-            lock.removeAttribute('disabled');
-        });
+        $(`.${color} > .disable-lock`).removeAttr('disabled')
         gameState.colorLockAvailable[color] = true;
     } else if (gameState.colorStatus.lowestRed === 11 && gameState.colorLockAvailable.red === false) {
         gameState.colorInPlay.red = false;
