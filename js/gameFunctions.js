@@ -103,7 +103,6 @@ const resetDisabledButtons = () => {
     }
 
     // Enables roll button
-    // elements.rollButton.removeAttribute('disabled');
     $('#roll-button').removeAttr('disabled');
 
     // Resets penalty boxes to be unchecked and disabled until first roll
@@ -114,9 +113,7 @@ const resetDisabledButtons = () => {
     }
     
     // Adds 'disabled' attribute to the lock buttons to show user they are unavailable at game start
-    for (let disableLock of elements.lockButtons.all) {
-        disableLock.setAttribute('disabled', true);
-    }
+    $('.disable-lock').attr('disabled', true);
 }
 
 // Function used to remove 'X's left from previous game
