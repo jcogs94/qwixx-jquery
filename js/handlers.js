@@ -3,31 +3,10 @@ import * as gameFunctions from "./gameFunctions.js";
 import * as elements from "./elements.js";
 import * as displayMessage from "./displayMessage.js";
 
-// Each of the handlers below update the 'playerChoice' and call for validation
+// Each color button will update the 'playerChoice' and call for validation
 // if the dice have been rolled
-const red = (redButtonPressed) => {
-    gameState.playerChoice = `red ${redButtonPressed}`;
-    if (gameState.diceRolled) {
-        gameFunctions.validateInput();
-    }
-}
-
-const yellow = (yellowButtonPressed) => {
-    gameState.playerChoice = `yellow ${yellowButtonPressed}`;
-    if (gameState.diceRolled) {
-        gameFunctions.validateInput();
-    }
-}
-
-const green = (greenButtonPressed) => {
-    gameState.playerChoice = `green ${greenButtonPressed}`;
-    if (gameState.diceRolled) {
-        gameFunctions.validateInput();
-    }
-}
-
-const blue = (blueButtonPressed) => {
-    gameState.playerChoice = `blue ${blueButtonPressed}`;
+const colorButton = (color, name) => {
+    gameState.playerChoice = `${color} ${name}`;
     if (gameState.diceRolled) {
         gameFunctions.validateInput();
     }
@@ -81,4 +60,4 @@ const penaltyBox = () => {
     }
 }
 
-export { red, yellow, green, blue, rollButton, newGameButton, penaltyBox };
+export { colorButton, rollButton, newGameButton, penaltyBox };
