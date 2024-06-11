@@ -77,7 +77,6 @@ const updateScoreBoard = () => {
     
     // Displays updated scores on the dom
     scoresArr.forEach( (scoreType) => {
-        // elements.scores[scoreType].innerText = `${gameState.scores[scoreType]}`;
         let id = '#';
         
         if (scoreType !== 'total') {
